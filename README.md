@@ -72,14 +72,16 @@ The platform focuses on trust, ease of use, and real-time communication.
 
 ### Could (Nice to Have)
 - **Map View of Listings** – Shows nearby rental items geographically.  
-- **“For You” Page** – Personalized recommendations based on user activity.  
+- **“For You” Page** – Personalized recommendations based on user activity.
+- **Computer Vision Damage Detection** – Too complex for timeline; may be explored later.
+- **AI Driven Bundling** - Uses an AI system to generate item bundling for rental.
 
 ---
 
-### Won’t (Out of Scope for This Quarter)
-- **Computer Vision Damage Detection** – Too complex for timeline; may be explored later.  
+### Won’t (Out of Scope for This Quarter) 
 - **Full AI Pricing Engine** – Only basic logic will be implemented initially.  
-- **Subscription System (delivery/damage protection)** – Deferred for future expansion.  
+- **Subscription System (delivery/damage protection)** – Deferred for future expansion.
+- **Worldwide Expansion** - The marketplace is limited to local users; global expansion is not planned for this scope.
 
 ---
 
