@@ -40,8 +40,9 @@ Rent-ALL is a web application that allows users to list items for rent, browse a
 
 ### Core User Flow:
 1. User creates an account and lists an item (or browses available rentals).  
-2. A renter selects an item, initiates a rental request, and chats with the owner.  
-3. After the rental is completed, both users leave ratings and reviews.  
+2. A renter selects an item, initiates a rental request, and chats with the owner.
+3. Renter and owner complete the transaction and set dates for rental.
+4. After the rental is completed, both users leave ratings and reviews.  
 
 The platform focuses on trust, ease of use, and real-time communication.
 
