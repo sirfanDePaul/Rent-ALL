@@ -114,6 +114,10 @@ The 8-week timeline may require reducing scope to ensure a functional MVP is del
 Features such as smart pricing and damage detection may be difficult to implement accurately within the timeframe.  
 → *Mitigation:* Use simplified logic or mock implementations for MVP, with room for future improvement.  
 
+### Security Deposit
+Renters could potentially steal or damage items.
+-> *Mitigation:* Renters will have to submit a security deposit upon rental agreement.
+
 ---
 
 ## 8. AI Disclosure
