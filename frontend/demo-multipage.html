@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>RentAll - Demo (Multi-page)</title>
+  <style>
+:root{--teal:#2a9d8f;--accent:#ff7a18;--bg:#f5f7f9;--card:#ffffff;--muted:#6b7280}
+body{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;margin:0;padding:0;background:var(--bg);color:#111827}
+.app{max-width:1200px;margin:24px auto;padding:20px}
+.header-top{display:flex;align-items:center;gap:16px;justify-content:space-between}
+.logo{margin:0;font-size:28px;display:flex;gap:6px;align-items:center}
+.search-bar{flex:1;display:flex;justify-content:center;padding:0 16px}
+.search-input{width:60%;max-width:760px;padding:10px 14px;border-radius:10px;border:1px solid rgba(0,0,0,0.08);background:#fff}
+.nav{display:flex;gap:10px;margin-top:12px;justify-content:center;flex-wrap:wrap}
+.tab{background:transparent;border:none;padding:10px 14px;border-radius:8px;cursor:pointer;font-weight:600;color:var(--teal)}
+.tab.active{background:var(--accent);color:#fff}
+.sub{text-align:center;color:var(--muted);margin-top:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
+.card{background:var(--card);border-radius:12px;overflow:hidden;box-shadow:0 6px 18px rgba(15,23,42,0.06);transition:transform .12s ease}
+.card-img{width:100%;height:180px;object-fit:cover;background:#ddd;display:block}
+.card-body{padding:14px}
+.card-body h3{margin:0 0 8px 0;font-size:16px}
+.price{color:var(--teal);font-weight:700;margin:0 0 8px 0}
+.location{color:var(--muted);font-size:13px;margin-bottom:8px}
+.btn{background:var(--teal);color:#fff;padding:8px 10px;border-radius:8px;border:none;cursor:pointer}
+.container{background:var(--card);padding:16px;border-radius:12px;box-shadow:0 6px 18px rgba(15,23,42,0.04)}
+.profile-pic{width:96px;height:96px;border-radius:50%;background:var(--teal);color:#fff;display:flex;align-items:center;justify-content:center;font-size:32px}
+.listing-row{display:flex;gap:12px;align-items:center;padding:10px;border-radius:8px;background:#fff;margin-bottom:10px}
+.listing-row img{width:140px;height:88px;object-fit:cover;border-radius:8px}
+.small{color:var(--muted);font-size:13px}
+@media (max-width:800px){.search-input{width:100%}.grid{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}}
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header class="header modern">
+      <div class="header-top">
+        <h1 class="logo"><span class="teal">Rent</span><span class="accent">All</span></h1>
+        <div class="search-bar">
+          <input id="search" class="search-input" placeholder="Search items, location, or category" />
+        </div>
+      </div>
+      <nav class="nav" id="nav">
+        <button class="tab active" data-tab="browse">Browse</button>
+        <button class="tab" data-tab="mylistings">My Listings</button>
+        <button class="tab" data-tab="messages">Messages</button>
+        <button class="tab" data-tab="account">Account</button>
+        <button class="tab" data-tab="help">Help</button>
+      </nav>
+      <p class="sub">Browse items to rent or list your own</p>
+    </header>
+
+    <main id="main">
+      <!-- Content rendered by JS -->
+    </main>
+  </div>
+
+<script>
+const listings = [
+  {id:1,title:'Canon DSLR Camera',price:25,location:'San Francisco, CA',img:'https://images.unsplash.com/photo-1517949908117-5d1d8e2d7b2d?w=1200&q=80&auto=format&fit=crop'},
+  {id:2,title:'Electric Bike',price:18,location:'Austin, TX',img:'https://images.unsplash.com/photo-1526178612419-1b1a76bc38a6?w=1200&q=80&auto=format&fit=crop'},
+  {id:3,title:'Portable Projector',price:40,location:'Seattle, WA',img:'https://images.unsplash.com/photo-1503602642458-232111445657?w=1200&q=80&auto=format&fit=crop'},
+  {id:4,title:'Bluetooth Speaker',price:9,location:'New York, NY',img:'https://images.unsplash.com/photo-1540508614796-3d5993f0d5b3?w=1200&q=80&auto=format&fit=crop'},
+  {id:5,title:'Camping Tent (4-person)',price:22,location:'Denver, CO',img:'https://images.unsplash.com/photo-1542838132-92c53300491e?w=1200&q=80&auto=format&fit=crop'},
+  {id:6,title:'Lawn Mower',price:15,location:'Portland, OR',img:'https://images.unsplash.com/photo-1514996937319-344454492b37?w=1200&q=80&auto=format&fit=crop'}
+];
+
+const myListings = [
+  {id:101,title:'GoPro Hero',price:12,location:'Remote',img:'https://images.unsplash.com/photo-1519183071298-a2962be54a91?w=1200&q=80&auto=format&fit=crop',status:'active'},
+  {id:102,title:'Acoustic Guitar',price:10,location:'Local',img:'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=1200&q=80&auto=format&fit=crop',status:'pending'}
+];
+
+function el(tag, attrs={}, children=''){
+  const e = document.createElement(tag);
+  Object.entries(attrs).forEach(([k,v])=>{ if(k==='class') e.className=v; else if(k==='html') e.innerHTML=v; else e.setAttribute(k,v)});
+  if(children) e.append(...(Array.isArray(children)?children:[children]));
+  return e;
+}
+
+function renderBrowse(){
+  const main = document.getElementById('main'); main.innerHTML='';
+  const grid = el('div',{class:'grid'});
+  listings.forEach(i=>{
+    const card = el('div',{class:'card'});
+    const img = el('img',{class:'card-img',src:i.img,alt:i.title});
+    const body = el('div',{class:'card-body'});
+    body.append(el('h3',{},i.title));
+    body.append(el('p',{class:'price'},`$${i.price}/day`));
+    body.append(el('p',{class:'location'},i.location));
+    const btn = el('button',{class:'btn'},'Rent'); btn.onclick=()=>alert('Request to rent '+i.title+' sent');
+    body.append(btn);
+    card.append(img,body); grid.append(card);
+  });
+  main.append(grid);
+}
+
+function renderMyListings(){
+  const main = document.getElementById('main'); main.innerHTML='';
+  const container = el('div',{class:'container'});
+  container.append(el('h2',{},'My Listings'));
+  myListings.forEach(m=>{
+    const row = el('div',{class:'listing-row'});
+    row.append(el('img',{src:m.img,alt:m.title}));
+    const body = el('div',{style:'flex:1'});
+    body.append(el('h3',{},m.title));
+    body.append(el('p',{class:'small'},`$${m.price}/day • ${m.location} • Status: ${m.status}`));
+    const actions = el('div',{});
+    const edit = el('button',{class:'btn'},'Edit'); edit.onclick=()=>alert('Edit '+m.title);
+    const del = el('button',{class:'btn', style:'background:#ff6b6b;margin-left:6px'},'Remove'); del.onclick=()=>alert('Remove '+m.title);
+    actions.append(edit,del); body.append(actions);
+    row.append(body); container.append(row);
+  });
+  container.append(el('button',{class:'btn'},'Create new listing'));
+  main.append(container);
+}
+
+function renderAccount(){
+  const main = document.getElementById('main'); main.innerHTML='';
+  const container = el('div',{class:'container'});
+  // Account header
+  const top = el('div',{style:'display:flex;gap:16px;align-items:center'});
+  top.append(el('div',{class:'profile-pic'},'JS'));
+  const info = el('div',{});
+  const nameEl = el('h2',{},'Jordan Saville');
+  info.append(nameEl);
+  const memberSince = el('p',{class:'small'},'Member since 2024 • Portland, OR');
+  info.append(memberSince);
+  const emailEl = el('p',{},'Email: jordan@example.com');
+  info.append(emailEl);
+  top.append(info); container.append(top);
+
+  // Account details form
+  container.append(el('h3',{},'Account Details'));
+  const form = el('div',{class:'create-section'});
+  const inputName = el('input',{class:'input',id:'acc-name',placeholder:'Full name',value:'Jordan Saville'});
+  const inputEmail = el('input',{class:'input',id:'acc-email',placeholder:'Email',value:'jordan@example.com'});
+  const inputLocation = el('input',{class:'input',id:'acc-location',placeholder:'Location',value:'Portland, OR'});
+  const updateBtn = el('button',{class:'btn',style:'margin-top:8px'},'Update Account');
+  updateBtn.onclick = ()=>{
+    const n = document.getElementById('acc-name').value;
+    const em = document.getElementById('acc-email').value;
+    const loc = document.getElementById('acc-location').value;
+    nameEl.textContent = n;
+    emailEl.textContent = 'Email: ' + em;
+    memberSince.textContent = 'Member since 2024 • ' + loc;
+    alert('Account updated');
+  };
+  form.append(inputName,inputEmail,inputLocation,updateBtn);
+  container.append(form);
+
+  // Rental history
+  container.append(el('h3',{},'Rental History'));
+  const rentalHistory = [
+    {id:201,title:'Camping Tent (4-person)',date:'2025-09-12',price:22,status:'Completed',img:'https://images.unsplash.com/photo-1542838132-92c53300491e?w=800&q=60&auto=format&fit=crop'},
+    {id:202,title:'Bluetooth Speaker',date:'2026-01-03',price:9,status:'Completed',img:'https://images.unsplash.com/photo-1540508614796-3d5993f0d5b3?w=800&q=60&auto=format&fit=crop'},
+    {id:203,title:'Electric Bike',date:'2026-03-15',price:18,status:'Cancelled',img:'https://images.unsplash.com/photo-1526178612419-1b1a76bc38a6?w=800&q=60&auto=format&fit=crop'}
+  ];
+  const rh = el('div',{});
+  rentalHistory.forEach(r=>{
+    const item = el('div',{class:'listing-row'});
+    item.append(el('img',{src:r.img,alt:r.title}));
+    const b = el('div',{style:'flex:1'});
+    b.append(el('h3',{},r.title));
+    b.append(el('p',{class:'small'},`${r.date} • $${r.price}/day • ${r.status}`));
+    const view = el('button',{class:'btn'},'View'); view.onclick=()=>alert('Viewing rental '+r.title);
+    b.append(view);
+    item.append(b); rh.append(item);
+  });
+  container.append(rh);
+
+  // User's listings (reuse myListings)
+  container.append(el('h3',{},'Your Listings'));
+  const ml = el('div',{});
+  myListings.forEach(m=>{
+    const row = el('div',{class:'listing-row'});
+    row.append(el('img',{src:m.img,alt:m.title}));
+    const body = el('div',{style:'flex:1'});
+    body.append(el('h3',{},m.title));
+    body.append(el('p',{class:'small'},`$${m.price}/day • ${m.location} • Status: ${m.status}`));
+    const actions = el('div',{});
+    const edit = el('button',{class:'btn'},'Edit'); edit.onclick=()=>alert('Edit '+m.title);
+    const del = el('button',{class:'btn', style:'background:#ff6b6b;margin-left:6px'},'Remove'); del.onclick=()=>alert('Remove '+m.title);
+    actions.append(edit,del); body.append(actions);
+    row.append(body); ml.append(row);
+  });
+  container.append(ml);
+
+  main.append(container);
+}
+
+function renderMessages(){
+  const main = document.getElementById('main'); main.innerHTML='';
+  const c = el('div',{class:'container'}); c.append(el('h2',{},'Messages (demo)'));
+  c.append(el('p',{},'No messages in demo.'));
+  main.append(c);
+}
+
+function renderHelp(){
+  const main = document.getElementById('main'); main.innerHTML='';
+  main.append(el('div',{class:'container'},[el('h2',{},'Help'), el('p',{},'This demo shows Browse, My Listings, Account, Messages, and Help pages.')]))
+}
+
+function showTab(tab){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active', t.dataset.tab===tab));
+  if(tab==='browse') renderBrowse();
+  else if(tab==='mylistings') renderMyListings();
+  else if(tab==='account') renderAccount();
+  else if(tab==='messages') renderMessages();
+  else renderHelp();
+}
+
+document.getElementById('nav').addEventListener('click', (ev)=>{
+  const b = ev.target.closest('button[data-tab]'); if(!b) return; showTab(b.dataset.tab);
+});
+
+document.getElementById('search').addEventListener('input',(e)=>{
+  const q = e.target.value.trim().toLowerCase();
+  if(!q){ renderBrowse(); return }
+  const filtered = listings.filter(i=>i.title.toLowerCase().includes(q)||i.location.toLowerCase().includes(q));
+  const main = document.getElementById('main'); main.innerHTML=''; const grid = el('div',{class:'grid'});
+  filtered.forEach(i=>{ const card = el('div',{class:'card'}); card.append(el('img',{class:'card-img',src:i.img,alt:i.title}), el('div',{class:'card-body',html:`<h3>${i.title}</h3><p class="price">$${i.price}/day</p><p class="location">${i.location}</p>`})); const btn = el('button',{class:'btn'},'Rent'); btn.onclick=()=>alert('Request to rent '+i.title+' sent'); card.querySelector('.card-body').append(btn); grid.append(card); }); main.append(grid);
+});
+
+// Initial
+showTab('browse');
+</script>
+</body>
+</html>

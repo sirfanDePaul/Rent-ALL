@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>RentAll - Demo Marketplace</title>
+  <style>
+:root{--teal:#2a9d8f;--accent:#ff7a18;--bg:#f5f7f9;--card:#ffffff;--muted:#6b7280}
+body{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;margin:0;padding:0;background:var(--bg);color:#111827}
+.app{max-width:1200px;margin:24px auto;padding:20px}
+.header{background:transparent;margin-bottom:18px}
+.header-top{display:flex;align-items:center;gap:16px;justify-content:space-between}
+.logo{margin:0;font-size:28px;display:flex;gap:6px;align-items:center}
+.search-bar{flex:1;display:flex;justify-content:center;padding:0 16px}
+.search-input{width:60%;max-width:760px;padding:10px 14px;border-radius:10px;border:1px solid rgba(0,0,0,0.08);background:#fff}
+.nav{display:flex;gap:10px;margin-top:12px;justify-content:center;flex-wrap:wrap}
+.tab{background:transparent;border:none;padding:10px 14px;border-radius:8px;cursor:pointer;font-weight:600;color:var(--teal)}
+.tab.active{background:var(--accent);color:#fff}
+.sub{text-align:center;color:var(--muted);margin-top:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
+.card{background:var(--card);border-radius:12px;overflow:hidden;box-shadow:0 6px 18px rgba(15,23,42,0.06);transition:transform .12s ease}
+.card-img{width:100%;height:180px;object-fit:cover;background:#ddd;display:block}
+.card-body{padding:14px}
+.card-body h3{margin:0 0 8px 0;font-size:16px}
+.price{color:var(--teal);font-weight:700;margin:0 0 8px 0}
+.location{color:var(--muted);font-size:13px;margin-bottom:8px}
+.btn{background:var(--teal);color:#fff;padding:8px 10px;border-radius:8px;border:none;cursor:pointer}
+.drawer{position:fixed;right:20px;bottom:20px;background:var(--card);padding:12px;border-radius:8px;box-shadow:0 8px 30px rgba(15,23,42,0.12)}
+.accent{color:var(--accent)}
+.teal{color:var(--teal)}
+</style>
+</head>
+<body>
+  <div class="app">
+    <header class="header modern">
+      <div class="header-top">
+        <h1 class="logo"><span class="teal">Rent</span><span class="accent">All</span></h1>
+        <div class="search-bar">
+          <input class="search-input" placeholder="Search items, location, or category" />
+        </div>
+      </div>
+      <nav class="nav">
+        <button class="tab active">Browse</button>
+        <button class="tab">My Listings</button>
+        <button class="tab">Messages</button>
+        <button class="tab">Account</button>
+        <button class="tab">Help</button>
+      </nav>
+      <p class="sub">Browse items to rent or list your own</p>
+    </header>
+
+    <main>
+      <section class="listings">
+        <div class="grid">
+          <!-- Card 1 -->
+          <div class="card">
+            <img class="card-img" src="https://images.unsplash.com/photo-1517949908117-5d1d8e2d7b2d?w=1200&q=80&auto=format&fit=crop" alt="Camera" />
+            <div class="card-body">
+              <h3>Canon DSLR Camera</h3>
+              <p class="price">$25/day</p>
+              <p class="location">San Francisco, CA</p>
+              <button class="btn" onclick="alert('Request to rent Canon DSLR sent')">Rent</button>
+            </div>
+          </div>
+          <!-- Card 2 -->
+          <div class="card">
+            <img class="card-img" src="https://images.unsplash.com/photo-1526178612419-1b1a76bc38a6?w=1200&q=80&auto=format&fit=crop" alt="Bike" />
+            <div class="card-body">
+              <h3>Electric Bike</h3>
+              <p class="price">$18/day</p>
+              <p class="location">Austin, TX</p>
+              <button class="btn" onclick="alert('Request to rent Electric Bike sent')">Rent</button>
+            </div>
+          </div>
+          <!-- Card 3 -->
+          <div class="card">
+            <img class="card-img" src="https://images.unsplash.com/photo-1503602642458-232111445657?w=1200&q=80&auto=format&fit=crop" alt="Projector" />
+            <div class="card-body">
+              <h3>Portable Projector</h3>
+              <p class="price">$40/day</p>
+              <p class="location">Seattle, WA</p>
+              <button class="btn" onclick="alert('Request to rent Portable Projector sent')">Rent</button>
+            </div>
+          </div>
+          <!-- Card 4 -->
+          <div class="card">
+            <img class="card-img" src="https://images.unsplash.com/photo-1540508614796-3d5993f0d5b3?w=1200&q=80&auto=format&fit=crop" alt="Speaker" />
+            <div class="card-body">
+              <h3>Bluetooth Speaker</h3>
+              <p class="price">$9/day</p>
+              <p class="location">New York, NY</p>
+              <button class="btn" onclick="alert('Request to rent Bluetooth Speaker sent')">Rent</button>
+            </div>
+          </div>
+          <!-- Card 5 -->
+          <div class="card">
+            <img class="card-img" src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=1200&q=80&auto=format&fit=crop" alt="Tent" />
+            <div class="card-body">
+              <h3>Camping Tent (4-person)</h3>
+              <p class="price">$22/day</p>
+              <p class="location">Denver, CO</p>
+              <button class="btn" onclick="alert('Request to rent Camping Tent sent')">Rent</button>
+            </div>
+          </div>
+          <!-- Card 6 -->
+          <div class="card">
+            <img class="card-img" src="https://images.unsplash.com/photo-1514996937319-344454492b37?w=1200&q=80&auto=format&fit=crop" alt="Lawn Mower" />
+            <div class="card-body">
+              <h3>Lawn Mower</h3>
+              <p class="price">$15/day</p>
+              <p class="location">Portland, OR</p>
+              <button class="btn" onclick="alert('Request to rent Lawn Mower sent')">Rent</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

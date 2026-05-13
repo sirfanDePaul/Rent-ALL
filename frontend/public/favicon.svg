@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 56">
+  <defs>
+    <linearGradient id="rentallFaviconGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#16a34a" />
+      <stop offset="100%" stop-color="#f97316" />
+    </linearGradient>
+  </defs>
+  <rect x="3" y="3" width="50" height="50" rx="16" fill="url(#rentallFaviconGrad)" />
+  <path d="M28 14.5 13 27v14.5c0 1.4 1.1 2.5 2.5 2.5h25c1.4 0 2.5-1.1 2.5-2.5V27L28 14.5z" fill="#fff" fill-opacity=".95" />
+  <path d="M25 44V33h6v11" stroke="url(#rentallFaviconGrad)" stroke-width="2.4" stroke-linecap="round" />
+  <path d="M20 30h16" stroke="url(#rentallFaviconGrad)" stroke-width="2.4" stroke-linecap="round" />
+  <circle cx="38.5" cy="18.5" r="4.5" fill="#fff" fill-opacity=".95" />
+  <path d="M40.8 18.5h4.4M42.8 17.1v2.8" stroke="url(#rentallFaviconGrad)" stroke-width="1.9" stroke-linecap="round" />
+</svg>

@@ -1,0 +1,34 @@
+version: 1
+applications:
+  - frontend:
+      phases:
+        preBuild:
+          commands:
+            - cd frontend
+            - npm ci
+        build:
+          commands:
+            - cd frontend && REACT_APP_API_URL=https://rentall-ylb9.onrender.com npm run build
+      artifacts:
+        baseDirectory: frontend/build
+        files:
+          - '**/*'
+      cache:
+        paths:
+          - frontend/node_modules/**/*
+    backend:
+      phases:
+        preBuild:
+          commands:
+            - cd backend
+            - npm ci
+        build:
+          commands:
+            - echo "Backend ready"
+      artifacts:
+        baseDirectory: backend
+        files:
+          - '**/*'
+      cache:
+        paths:
+          - backend/node_modules/**/*

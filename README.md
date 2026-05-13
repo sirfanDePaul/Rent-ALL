@@ -1,125 +1,39 @@
-# Rent-ALL – Local Rental Marketplace
+[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/vZO_mKB3)
+[![Open in Codespaces](https://classroom.github.com/assets/launch-codespace-2972f46106e565e64193e422d61a12cf1da4916b45550586e14ef0a7c637dd04.svg)](https://classroom.github.com/open-in-codespaces?assignment_repo_id=23526880)
+# CSC 394 / IS 376  Team Project
 
-## 1. Project Title and Team
+## Spring 2026  DePaul University
 
-### Project Title:
-**Rent-ALL – Local Rental Marketplace**
-
-### Team Members & Roles:
-- **Frontend Developer:** Peter  
-- **Backend Developer:** Jeremy  
-- **Database Engineer:** Sage  
-- **Presentation Manager & Cloud/Deployment Engineer:** Jeff  
-- **Backend Developer (AI/Computer Vision Support):** Vishwash  
+Welcome to your team project repository for **CSC 394: Software Projects**.
 
 ---
 
-## 2. Problem Statement
+## Getting Started
 
-Many people own items that are rarely used, while others need those same items temporarily but don’t want to purchase them. Existing rental platforms are often limited to specific categories (e.g., cars, tools) and lack flexible, local item sharing with strong trust systems.  
+1. **Clone this repository** to your local machine
+2. **Create a feature branch** for your work (the main branch is protected)
+3. **Push your branch** and open a Pull Request for code review
 
-There is currently no simple, centralized platform for everyday users to safely rent items from each other across multiple categories.
+## Branch Protection
 
----
+- The main branch is protected  direct pushes are not allowed.
+- All changes must go through a Pull Request and be reviewed by at least one teammate.
 
-## 3. Target Users
+## Team Information
 
-### Primary Users:
-- Students and young adults who want to rent or lend items  
-  *(e.g., tools, electronics, cameras, event supplies)*
+| Role | Name |
+|------|------|
+| Project Manager | |
+| Technical Lead | |
+| QA / Testing Lead | |
+| DevOps / Deployment | |
+| Documentation | |
 
-### Secondary Users:
-- Frequent renters/lenders who want to monetize unused items  
-- Moderators/admins managing listings and disputes  
+## AI Disclosure
 
----
-
-## 4. Proposed Solution
-
-Rent-ALL is a web application that allows users to list items for rent, browse available items nearby, and securely communicate and transact with other users.
-
-### Core User Flow:
-1. User creates an account and lists an item (or browses available rentals).  
-2. A renter selects an item, initiates a rental request, and chats with the owner.
-3. Renter and owner complete the transaction and set dates for rental.
-4. After the rental is completed, both users leave ratings and reviews.  
-
-The platform focuses on trust, ease of use, and real-time communication.
+Per course policy, document AI tool usage in your PR descriptions and milestone submissions.
 
 ---
 
-## 5. Key Features with Priorities (MoSCoW)
-
-### Must (Core Functionality)
-- **User Accounts & Profiles** – Users create profiles with listed items, skills, and basic verification info.  
-- **Browsing & Search Catalogue** – Users can browse, filter, and search available rental items.  
-- **Rental Transactions** – Users can request, approve, and track rental agreements.  
-- **Chat System** – Built-in messaging between renters and lenders.  
-- **Category Sorting** – Items are organized into categories for easier navigation.  
-- **Rating & Review System** – Users rate each other (1–5 stars) after transactions.  
-- **Email Notifications** – Alerts for messages, rental updates, and confirmations.  
-
----
-
-### Should (Important Enhancements)
-- **Trust Rating System** – Combines ratings, response time, and history into a trust score.  
-- **Badge System** – Rewards users based on Trust Rating System  
-  *(e.g., “Top Lender”, “Reliable Renter”)*  
-- **Smart Pricing Suggestions** – Suggests rental prices based on similar listings.  
-- **Rental Bundling** – Users can group items together into packages.  
-
----
-
-### Could (Nice to Have)
-- **Map View of Listings** – Shows nearby rental items geographically.  
-- **“For You” Page** – Personalized recommendations based on user activity.
-- **Computer Vision Damage Detection** – Too complex for timeline; may be explored later.
-- **AI Driven Bundling** - Uses an AI system to generate item bundling for rental.
-
----
-
-### Won’t (Out of Scope for This Quarter) 
-- **Full AI Pricing Engine** – Only basic logic will be implemented initially.  
-- **Subscription System (delivery/damage protection)** – Deferred for future expansion.
-- **Worldwide Expansion** - The marketplace is limited to local users; global expansion is not planned for this scope.
-
----
-
-## 6. Technical Direction
-
-- **Frontend:** React  
-- **Backend:** Node.js with Express (REST API)  
-- **Database:** PostgreSQL  
-- **Authentication:** JWT-based authentication  
-- **Deployment:** AWS  
-- **CI/CD:** GitHub Actions  
-
-### Notes:
-- Real-time chat may require WebSockets (potential complexity).  
-- Email notifications will use a third-party service.  
-
----
-
-## 7. Risks and Open Questions
-
-### User Trust and Safety Concerns
-Users may hesitate to rent items from strangers or worry about potential damage or misuse.  
-→ *Mitigation:* Implement a rating/review system and basic profile verification to build trust.  
-
-### Limited Development Timeline
-The 8-week timeline may require reducing scope to ensure a functional MVP is delivered.  
-→ *Mitigation:* Prioritize “Must” features and treat advanced features as stretch goals.  
-
-### Complexity of Advanced Features (AI/Smart Systems)
-Features such as smart pricing and damage detection may be difficult to implement accurately within the timeframe.  
-→ *Mitigation:* Use simplified logic or mock implementations for MVP, with room for future improvement.  
-
-### Security Deposit
-Renters could potentially steal or damage items.
--> *Mitigation:* Renters will have to submit a security deposit upon rental agreement.
-
----
-
-## 8. AI Disclosure
-
-AI tools (such as ChatGPT) were used to help brainstorm features, refine the project scope, and draft sections of this pitch document. All final decisions and structure were reviewed and adjusted by the team.
+**Instructor:** Brian O'Donnell  bodonne3@depaul.edu
+**Office Hours:** Thursday and Friday, 1:00-2:00 PM
